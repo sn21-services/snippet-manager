@@ -98,9 +98,9 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="h-screen">
       <HeaderApp />
-      <div className="flex">
+      <div className="flex h-[calc(100vh-64px)]">
         <EditorMonaco
           value={code}
           defaultLanguage="javascript"
@@ -108,13 +108,6 @@ const Home = () => {
         />
 
         <div className="w-1/2">
-          <button
-            className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-600"
-            onClick={handleRunCode}
-          >
-            Run code
-          </button>
-
           <Output consoleLogs={consoleLogs} outputContent={outputContent} />
         </div>
       </div>

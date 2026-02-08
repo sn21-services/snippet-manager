@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { Resizable } from "react-resizable";
 
 type OutputProps = {
@@ -8,11 +9,35 @@ type OutputProps = {
 };
 
 const Output = ({ outputContent, consoleLogs }: OutputProps) => {
+  const [sizeContent, setSizeContent] = useState<{
+    width: number;
+    height: number;
+  }>({
+    width: 100,
+    height: 100,
+  });
+  const handleResize = (event, { node, size, handle }) => {
+    setSizeContent({ ...sizeContent, width: size.width, height: size.height });
+  };
   return (
-    <div>
-      <iframe srcDoc={outputContent} sandbox="allow-scripts" />
-      <Resizable width={100} height={100}>
-        <div>
+    <div className="flex flex-col h-full">
+      <iframe
+        className="h-[60%]"
+        srcDoc={outputContent}
+        sandbox="allow-scripts"
+      />
+      <Resizable
+        onResize={handleResize}
+        className="h-[40%]"
+        width={sizeContent.width}
+        height={sizeContent.height}
+      >
+        <div
+          style={{
+            width: sizeContent.width + "px",
+            height: sizeContent.height + "px",
+          }}
+        >
           <div className="p-3 bg-gray-800">Console</div>
           {consoleLogs.map((log, index) => (
             <div
