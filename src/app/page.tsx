@@ -3,12 +3,13 @@ import { useState, useEffect } from "react";
 import { type EditorProps } from "@monaco-editor/react";
 
 import EditorMonaco from "@/src/components/EditorMonaco/EditorMonaco";
-import Output from "@/src/components/Output/Output";
 import HeaderApp from "@/src/components/HeaderApp/HeaderApp";
+import Console from "@/src/components/Console/Console";
+import Preview from "@/src/components/Preview/Preview";
 
 const Home = () => {
   const [code, setCode] = useState<string>("");
-  const [outputContent, setOutputContent] = useState<string>("");
+  const [contentCode, setContentCode] = useState<string>("");
   const [consoleLogs, setConsoleLogs] = useState<
     { method: string; data: never[]; timestamp: string }[]
   >([]);
@@ -94,12 +95,12 @@ const Home = () => {
       </body>
       </html>
     `;
-    setOutputContent(html);
+    setContentCode(html);
   };
 
   return (
     <div className="h-screen">
-      <HeaderApp />
+      <HeaderApp onClickRunCode={handleRunCode} />
       <div className="flex h-[calc(100vh-64px)]">
         <EditorMonaco
           value={code}
@@ -107,8 +108,9 @@ const Home = () => {
           onChange={handleChangeValue}
         />
 
-        <div className="w-1/2">
-          <Output consoleLogs={consoleLogs} outputContent={outputContent} />
+        <div className="relative flex-1">
+          <Preview contentCode={contentCode} />
+          <Console consoleLogs={consoleLogs} />
         </div>
       </div>
     </div>

@@ -1,9 +1,16 @@
-const HeaderApp = () => {
+type HeaderAppProps = {
+  onClickRunCode: () => void;
+};
+
+const HeaderApp = ({ onClickRunCode }: HeaderAppProps) => {
   return (
     <header className="border-b border-[#3e3e3e] h-16">
       <section className="flex items-center justify-between p-3">
         <div>
-          <button className="rounded-lg bg-amber-600 py-2 px-3 text-base cursor-pointer hover:bg-amber-700">
+          <button
+            className="rounded-lg bg-amber-600 py-2 px-3 text-base cursor-pointer hover:bg-amber-700"
+            onClick={onClickRunCode}
+          >
             Run code
           </button>
         </div>
