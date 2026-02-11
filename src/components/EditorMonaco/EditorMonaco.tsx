@@ -2,12 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { Resizable, ResizeCallbackData } from "react-resizable";
-import { Editor, type EditorProps } from "@monaco-editor/react";
+import { Editor, type EditorProps, useMonaco } from "@monaco-editor/react";
 import "react-resizable/css/styles.css";
+import { emmetCSS, emmetHTML, emmetJSX } from "emmet-monaco-es";
 
 const RATIO = 0.55;
 
 const EditorMonaco = ({ language, ...props }: EditorProps) => {
+  const monaco = useMonaco();
   const [width, setWidth] = useState<number | null>(null);
 
   const onResize = (_: React.SyntheticEvent, { size }: ResizeCallbackData) => {
@@ -25,6 +27,14 @@ const EditorMonaco = ({ language, ...props }: EditorProps) => {
     return () => window.removeEventListener("resize", calcWidth);
   }, []);
 
+  useEffect(() => {
+    if (!monaco) return;
+
+    emmetHTML(monaco);
+    emmetCSS(monaco);
+    emmetJSX(monaco);
+  }, [monaco]);
+
   if (width === null) return null;
 
   return (
@@ -37,7 +47,17 @@ const EditorMonaco = ({ language, ...props }: EditorProps) => {
       className="h-full"
     >
       <div className="relative wrap-editor" style={{ width: `${width}px` }}>
-        <Editor theme="vs-dark" language={language} {...props} />
+        <Editor
+          theme="vs-dark"
+          language={language}
+          options={{
+            tabCompletion: "on",
+            quickSuggestions: true,
+            suggestOnTriggerCharacters: true,
+            snippetSuggestions: "inline",
+          }}
+          {...props}
+        />
       </div>
     </Resizable>
   );
