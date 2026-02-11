@@ -1,34 +1,3 @@
-// "use client";
-// import { useEffect, useState } from "react";
-// import { Editor, type EditorProps } from "@monaco-editor/react";
-// import { Resizable, type ResizeCallbackData } from "react-resizable";
-
-// const EditorMonaco = ({ ...props }: EditorProps) => {
-//   const [width, setWidth] = useState(1000);
-//   const onResize = (_: React.SyntheticEvent, { size }: ResizeCallbackData) => {
-//     setWidth(size.width);
-//   };
-
-//   useEffect(() => {
-//     const handleResizeScreen = () => {
-//       setWidth(window.innerWidth * 0.55);
-//     };
-//     window.addEventListener("resize", handleResizeScreen);
-
-//     return () => window.removeEventListener("resize", handleResizeScreen);
-//   }, []);
-
-//   return (
-//     <Resizable width={width} height={Infinity} axis="x" onResize={onResize}>
-//       <div className="relative wrap-editor" style={{ width: `${width}px` }}>
-//         <Editor {...props} theme="vs-dark" />
-//       </div>
-//     </Resizable>
-//   );
-// };
-
-// export default EditorMonaco;
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -38,7 +7,7 @@ import "react-resizable/css/styles.css";
 
 const RATIO = 0.55;
 
-const EditorMonaco = ({ ...props }: EditorProps) => {
+const EditorMonaco = ({ language, ...props }: EditorProps) => {
   const [width, setWidth] = useState<number | null>(null);
 
   const onResize = (_: React.SyntheticEvent, { size }: ResizeCallbackData) => {
@@ -68,7 +37,7 @@ const EditorMonaco = ({ ...props }: EditorProps) => {
       className="h-full"
     >
       <div className="relative wrap-editor" style={{ width: `${width}px` }}>
-        <Editor {...props} theme="vs-dark" />
+        <Editor theme="vs-dark" language={language} {...props} />
       </div>
     </Resizable>
   );

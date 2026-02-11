@@ -32,23 +32,23 @@ body {
   top: 0;
   right: 0;
   background: #555;
-  cursor: col-resize !important;
-  display: none;
+  cursor: e-resize !important;
   z-index: 20;
   background-image: none !important;
   transform: none;
   margin-top: 0;
+  opacity: 0;
 }
 
-.wrap-editor:hover .react-resizable-handle {
-  display: block;
+.wrap-editor .react-resizable-handle:hover {
+  opacity: 1;
 }
 
 .wrap-console .react-resizable-handle {
   height: 1px !important;
   width: 100% !important;
   position: absolute;
-  cursor: row-resize !important;
+  cursor: n-resize !important;
   z-index: 20;
   background-image: none !important;
   transform: none;
