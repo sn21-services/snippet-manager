@@ -12,7 +12,11 @@ import { CodeEditor } from "@/types/app.types";
 // import HtmlIcon from "@/assets/icons/html-icon.svg";
 
 const Home = () => {
-  const [code, setCode] = useState<CodeEditor>({ html: "", css: "", js: "" });
+  const [code, setCode] = useState<CodeEditor>({
+    html: "",
+    css: "",
+    javascript: "",
+  });
   const [contentCode, setContentCode] = useState<string>("");
   const [consoleLogs, setConsoleLogs] = useState<
     { method: string; data: never[]; timestamp: string }[]
@@ -107,7 +111,7 @@ const Home = () => {
           })()
         </script>
         <script>
-           ${code.js}
+           ${code.javascript}
         </script>
       </body>
       </html>
@@ -170,11 +174,11 @@ const Home = () => {
         <div
           className={cn(
             "flex items-center px-5 py-2 gap-2 text-sm cursor-pointer select-none",
-            language === LanguageDevelopment.JS
+            language === LanguageDevelopment.JAVASCRIPT
               ? "bg-[#1e1e1e]"
               : "bg-[#3d3e41]",
           )}
-          onClick={() => setLanguage(LanguageDevelopment.JS)}
+          onClick={() => setLanguage(LanguageDevelopment.JAVASCRIPT)}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -198,7 +202,8 @@ const Home = () => {
         <EditorMonaco
           key="monaco"
           value={code[language]}
-          defaultLanguage={language}
+          defaultLanguage={LanguageDevelopment.HTML}
+          language={language}
           onChange={(value) => handleChangeValue(value)}
         />
         <div className="relative flex-1">
