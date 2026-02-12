@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Resizable, type ResizeCallbackData } from "react-resizable";
+
 import { cn } from "@/utils/tailwind.helper";
 
 type ConsoleProps = {
@@ -46,13 +47,12 @@ const Console = ({ consoleLogs, onClearConsole }: ConsoleProps) => {
       height={height}
       axis="y"
       resizeHandles={["n"]}
-      handleSize={[0, 8]}
       minConstraints={[Infinity, MIN_HEIGHT_CONSOLE]}
       maxConstraints={[Infinity, 700]}
       onResize={onResize}
     >
       <section
-        className="bg-[#1e1e1e] absolute! bottom-0 w-full wrap-console overflow-auto"
+        className="bg-[#1e1e1e] w-full wrap-console overflow-auto"
         style={{ height: `${height}px` }}
       >
         <div className="bg-[#2e3138] flex items-center justify-between">
