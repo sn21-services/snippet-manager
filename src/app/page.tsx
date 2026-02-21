@@ -9,7 +9,6 @@ import Preview from "@/components/Preview/Preview";
 import { LanguageDevelopment } from "@/constants/app.constants";
 import { cn } from "@/utils/tailwind.helper";
 import { CodeEditor } from "@/types/app.types";
-// import HtmlIcon from "@/assets/icons/html-icon.svg";
 
 const Home = () => {
   const [code, setCode] = useState<CodeEditor>({
