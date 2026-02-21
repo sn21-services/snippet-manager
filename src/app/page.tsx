@@ -12,7 +12,7 @@ import { CodeEditor } from "@/types/app.types";
 
 const Home = () => {
   const [code, setCode] = useState<CodeEditor>({
-    html: "",
+    html: `<img src="https://images.pexels.com/photos/18816026/pexels-photo-18816026.jpeg" alt="">`,
     css: "",
     javascript: "",
   });
@@ -57,7 +57,17 @@ const Home = () => {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
-        <style>${code.css}</style>
+        <style>
+          * {
+            box-sizing: border-box;
+          }
+          img {
+            max-width: 100%;
+            width: 100%;
+            object-fit: cover;
+          }  
+          ${code.css}
+        </style>
       </head>
       <body>
         ${code.html}
@@ -205,7 +215,7 @@ const Home = () => {
           language={language}
           onChange={(value) => handleChangeValue(value)}
         />
-        <div className="relative flex-1">
+        <div className="relative flex-1 flex flex-col">
           <Preview contentCode={contentCode} />
           <Console
             consoleLogs={consoleLogs}

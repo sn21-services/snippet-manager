@@ -3,8 +3,8 @@ type PreviewProps = {
 };
 const Preview = ({ contentCode }: PreviewProps) => {
   return (
-    <div className="bg-white h-full">
-      <iframe srcDoc={contentCode} sandbox="allow-scripts allow-same-origin" />
+    <div className="bg-white flex-1 relative">
+      <iframe srcDoc={contentCode} sandbox="allow-scripts" className="w-full" />
     </div>
   );
 };
