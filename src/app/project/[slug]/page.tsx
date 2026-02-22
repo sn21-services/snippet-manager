@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { type EditorProps } from "@monaco-editor/react";
 
 import EditorMonaco from "@/components/EditorMonaco/EditorMonaco";
-import HeaderApp from "@/components/HeaderApp/HeaderApp";
+
 import Console from "@/components/Console/Console";
 import Preview from "@/components/Preview/Preview";
 import { LanguageDevelopment } from "@/constants/app.constants";
@@ -133,8 +133,7 @@ const Home = () => {
   };
 
   return (
-    <div className="h-screen">
-      <HeaderApp onClickRunCode={handleRunCode} />
+    <>
       <div className="flex items-center h-9">
         <div
           className={cn(
@@ -207,7 +206,7 @@ const Home = () => {
           js
         </div>
       </div>
-      <div className="flex h-[calc(100vh-100px)]">
+      <div className="flex h-[calc(100vh-92px)]">
         <EditorMonaco
           key="monaco"
           value={code[language]}
@@ -223,7 +222,7 @@ const Home = () => {
           />
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

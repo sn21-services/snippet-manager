@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { Resizable, ResizeCallbackData } from "react-resizable";
 import { Editor, type EditorProps, useMonaco } from "@monaco-editor/react";
-import "react-resizable/css/styles.css";
 import { emmetCSS, emmetHTML, emmetJSX } from "emmet-monaco-es";
 
 const RATIO = 0.55;
