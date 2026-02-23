@@ -34,3 +34,19 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Docker
+
+Build a production image and run it locally:
+
+```bash
+# build the image (run from project root)
+docker build -t snippet-manager:latest .
+
+# run the container (maps container 3000 -> host 3000)
+docker run -p 3000:3000 --env NODE_ENV=production --name snippet-manager snippet-manager:latest
+```
+
+Notes:
+- The Dockerfile prefers `package-lock.json` (npm). If you rely on `yarn` or `pnpm`, ensure the corresponding lockfile is present and adjust the runtime command if needed.
+- To pass environment variables from a file use `--env-file .env`.
