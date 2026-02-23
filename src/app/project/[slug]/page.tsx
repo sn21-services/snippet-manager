@@ -9,6 +9,7 @@ import Preview from "@/components/Preview/Preview";
 import { LanguageDevelopment } from "@/constants/app.constants";
 import { cn } from "@/utils/tailwind.helper";
 import { CodeEditor } from "@/types/app.types";
+import HeaderApp from "@/components/HeaderApp/HeaderApp";
 
 const Home = () => {
   const [code, setCode] = useState<CodeEditor>({
@@ -134,6 +135,7 @@ const Home = () => {
 
   return (
     <>
+      <HeaderApp onClickRunCode={handleRunCode} />
       <div className="flex items-center h-9">
         <div
           className={cn(
@@ -206,7 +208,7 @@ const Home = () => {
           js
         </div>
       </div>
-      <div className="flex h-[calc(100vh-92px)]">
+      <div className="flex h-[calc(100vh-84px)]">
         <EditorMonaco
           key="monaco"
           value={code[language]}
