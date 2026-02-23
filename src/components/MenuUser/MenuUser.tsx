@@ -5,7 +5,7 @@ const MenuUser = () => {
   return (
     <div>
       <Popover className="relative">
-        <PopoverButton className="w-8 h-8 rounded-full bg-gray-500 flex items-center justify-center cursor-pointer">
+        <PopoverButton className="w-7 h-7 rounded-full bg-[#79ecdb] text-[12px] flex items-center justify-center text-[#272727]">
           S
         </PopoverButton>
         <PopoverPanel

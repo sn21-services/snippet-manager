@@ -1,10 +1,14 @@
+import Link from "next/link";
 import Image from "next/image";
 
 import HtmlCssJsImage from "@/assets/images/html-css-js.png";
 
 const AddNewProject = () => {
   return (
-    <button className="bg-[#17191c] flex items-center rounded-lg hover:outline hover:outline-[#fff9] cursor-pointer gap-4">
+    <Link
+      href="/project/1"
+      className="bg-[#17191c] inline-flex items-center rounded-lg hover:outline hover:outline-[#fff9] cursor-pointer gap-4"
+    >
       <div className="py-4 pl-5 flex items-center gap-3">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +27,7 @@ const AddNewProject = () => {
         </div>
       </div>
       <Image src={HtmlCssJsImage} width={100} alt="" />
-    </button>
+    </Link>
   );
 };
 
