@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import LogoApp from "@/components/LogoApp/LogoApp";
+
 type LayoutProps = {
   children: Readonly<React.ReactNode>;
 };
@@ -8,16 +10,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <div>
       <header className="bg-[#2e3138] h-12 shadow-md relative flex items-center px-4 justify-between">
-        <div className="font-medium text-amber-600 text-xs">
-          <span className="bg-amber-600 w-4.5 h-4.5 inline-flex rounded-full items-center justify-center text-sm font-bold text-[#eee]">
-            S
-          </span>
-          ave
-          <span className="bg-amber-600 w-4.5 h-4.5 inline-flex rounded-full items-center justify-center text-sm font-bold text-[#eee]">
-            C
-          </span>
-          ode
-        </div>
+        <LogoApp />
 
         <div className="flex items-center gap-2.5">
           <button className="text-xs text-[#68def8] font-medium flex items-center gap-1 px-2 py-1.5 border border-transparent hover:bg-[#26292e] hover:border hover:border-[#ebf0fa1a] rounded-md">

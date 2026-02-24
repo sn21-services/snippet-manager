@@ -41,12 +41,13 @@ Build a production image and run it locally:
 
 ```bash
 # build the image (run from project root)
-docker build -t snippet-manager:latest .
+docker build -t nextjs-fe:test .
 
 # run the container (maps container 3000 -> host 3000)
-docker run -p 3000:3000 --env NODE_ENV=production --name snippet-manager snippet-manager:latest
+docker run -d -p 3000:3000 --name snippet-manager nextjs-fe:test
 ```
 
 Notes:
+
 - The Dockerfile prefers `package-lock.json` (npm). If you rely on `yarn` or `pnpm`, ensure the corresponding lockfile is present and adjust the runtime command if needed.
 - To pass environment variables from a file use `--env-file .env`.

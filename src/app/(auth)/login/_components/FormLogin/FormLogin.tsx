@@ -1,17 +1,10 @@
+import LogoApp from "@/components/LogoApp/LogoApp";
+
 const FormLogin = () => {
   return (
     <section className="flex-2 bg-[#17191c] ">
       <header className="py-6 px-7">
-        <div className="font-medium text-amber-600 text-xs">
-          <span className="bg-amber-600 w-4.5 h-4.5 inline-flex rounded-full items-center justify-center text-sm font-bold text-[#eee]">
-            S
-          </span>
-          ave
-          <span className="bg-amber-600 w-4.5 h-4.5 inline-flex rounded-full items-center justify-center text-sm font-bold text-[#eee]">
-            C
-          </span>
-          ode
-        </div>
+        <LogoApp />
       </header>
 
       <div className="mt-20 px-10 text-center max-w-[70%] w-full mx-auto">
