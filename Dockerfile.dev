@@ -1,0 +1,24 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Cài deps
+COPY package.json yarn.lock* ./
+RUN yarn install --frozen-lockfile
+
+# Copy toàn bộ code
+COPY . .
+
+# Expose port
+EXPOSE 3000
+
+# Chạy dev server
+ENV NODE_ENV=development
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+# Bật polling để detect file change trong Docker (rất quan trọng!)
+ENV CHOKIDAR_USEPOLLING=true
+ENV WATCHPACK_POLLING=true
+
+CMD ["yarn", "dev"]

@@ -1,0 +1,23 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: snippet-manager-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules # Giữ node_modules trong container (tránh conflict)
+      - /app/.next # Giữ cache .next trong container
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+      - CHOKIDAR_USEPOLLING=true
+      # Nếu cần proxy công ty:
+      # - HTTP_PROXY=http://proxy-cong-ty:port
+      # - HTTPS_PROXY=http://proxy-cong-ty:port
+      # - NO_PROXY=localhost,127.0.0.1
+    restart: unless-stopped
+    command: yarn dev # override nếu cần
