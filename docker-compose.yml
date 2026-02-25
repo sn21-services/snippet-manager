@@ -7,17 +7,15 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - .:/app
-      - /app/node_modules # Giữ node_modules trong container (tránh conflict)
-      - /app/.next # Giữ cache .next trong container
+      - .:/app # mount code từ host
+      - node_modules:/app/node_modules # named volume, tránh bị đè
+      - next_cache:/app/.next # named volume cho cache
     environment:
       - NODE_ENV=development
-      - PORT=3000
-      - HOSTNAME=0.0.0.0
       - CHOKIDAR_USEPOLLING=true
-      # Nếu cần proxy công ty:
-      # - HTTP_PROXY=http://proxy-cong-ty:port
-      # - HTTPS_PROXY=http://proxy-cong-ty:port
-      # - NO_PROXY=localhost,127.0.0.1
+      - WATCHPACK_POLLING=true
     restart: unless-stopped
-    command: yarn dev # override nếu cần
+
+volumes:
+  node_modules:
+  next_cache:
